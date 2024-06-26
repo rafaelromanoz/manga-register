@@ -82,3 +82,4 @@ C:\Users\Rafael\Documents\Visual Studio 2015\Projects\manga_register\manga_regis
 C:\Users\Rafael\Documents\Visual Studio 2015\Projects\manga_register\manga_register\obj\Debug\manga_register.dll
 C:\Users\Rafael\Documents\Visual Studio 2015\Projects\manga_register\manga_register\obj\Debug\manga_register.xml
 C:\Users\Rafael\Documents\Visual Studio 2015\Projects\manga_register\manga_register\obj\Debug\manga_register.pdb
+C:\Users\Rafael\Documents\Visual Studio 2015\Projects\manga_register\manga_register\obj\Debug\manga_register.vbprojResolveAssemblyReference.cache

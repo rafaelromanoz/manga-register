@@ -18,7 +18,7 @@ End Code
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(Function(m) m.Password, New With {.class = "col-md-2 control-label"})
+            @Html.LabelFor(Function(m) m.Password, "Senha", New With {.class = "col-md-2 control-label"})
             <div class="col-md-10">
                 @Html.PasswordFor(Function(m) m.Password, New With {.class = "form-control"})
                 @Html.ValidationMessageFor(Function(m) m.Password, "", New With {.class = "text-danger"})

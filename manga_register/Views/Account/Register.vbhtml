@@ -1,6 +1,6 @@
 ﻿@ModelType manga_register.manga_register.Models.User
 @Code
-    ViewBag.Title = "Register"
+    ViewBag.Title = "Registrar"
 End Code
 
 <h2>@ViewBag.Title</h2>
@@ -10,7 +10,7 @@ End Code
 
     @<text>
         <div class="form-group">
-            @Html.LabelFor(Function(m) m.UserName, New With {.class = "col-md-2 control-label"})
+            @Html.LabelFor(Function(m) m.UserName, "Nome usuário", New With {.class = "col-md-2 control-label"})
             <div class="col-md-10">
                 @Html.TextBoxFor(Function(m) m.UserName, New With {.class = "form-control"})
                 @Html.ValidationMessageFor(Function(m) m.UserName, "", New With {.class = "text-danger"})
@@ -24,15 +24,16 @@ End Code
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(Function(m) m.Password, New With {.class = "col-md-2 control-label"})
+            @Html.LabelFor(Function(m) m.Password, "Senha", New With {.class = "col-md-2 control-label"})
             <div class="col-md-10">
                 @Html.PasswordFor(Function(m) m.Password, New With {.class = "form-control"})
                 @Html.ValidationMessageFor(Function(m) m.Password, "", New With {.class = "text-danger"})
             </div>
         </div>
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" class="btn btn-default" value="Register" />
+                <input type="submit" class="btn btn-default" value="Registrar" />
             </div>
         </div>
     </text> End Using

@@ -1,6 +1,6 @@
 ﻿@ModelType manga_register.manga_register.Models.User
 @Code
-    ViewBag.Title = "Forgot Password"
+    ViewBag.Title = "Esqueceu a senha?"
 End Code
 
 <h2>@ViewBag.Title</h2>
@@ -9,22 +9,24 @@ End Code
     @Html.AntiForgeryToken()
 
     @<text>
+        <hr />
+        @Html.ValidationSummary(True, "", New With {.class = "text-danger"})
         <div class="form-group">
             @Html.LabelFor(Function(m) m.Email, New With {.class = "col-md-2 control-label"})
             <div class="col-md-10">
-                @Html.TextBoxFor(Function(m) m.Email, New With {.class = "form-control"})
+                @Html.TextBoxFor(Function(m) m.Email, "Email", New With {.class = "form-control"})
                 @Html.ValidationMessageFor(Function(m) m.Email, "", New With {.class = "text-danger"})
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(Function(m) m.Password, New With {.class = "col-md-2 control-label"})
+            @Html.LabelFor(Function(m) m.Password, "Senha", New With {.class = "col-md-2 control-label"})
             <div class="col-md-10">
                 @Html.PasswordFor(Function(m) m.Password, New With {.class = "form-control"})
                 @Html.ValidationMessageFor(Function(m) m.Password, "", New With {.class = "text-danger"})
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(Function(m) m.ConfirmPassword, New With {.class = "col-md-2 control-label"})
+            @Html.LabelFor(Function(m) m.ConfirmPassword, "Confirmar senha", New With {.class = "col-md-2 control-label"})
             <div class="col-md-10">
                 @Html.PasswordFor(Function(m) m.ConfirmPassword, New With {.class = "form-control"})
                 @Html.ValidationMessageFor(Function(m) m.ConfirmPassword, "", New With {.class = "text-danger"})
@@ -35,7 +37,8 @@ End Code
                 <input type="submit" class="btn btn-default" value="Alterar Senha" />
             </div>
         </div>
-    </text> End Using
+    </text>
+End Using
 
 @section Scripts
     @Scripts.Render("~/bundles/jqueryval")

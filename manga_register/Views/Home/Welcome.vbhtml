@@ -1,7 +1,7 @@
 ﻿@Code
-    ViewBag.Title = "Bem-vindo"
+    ViewBag.Title = "Olá!"
 End Code
-
 <h2>@ViewBag.Title</h2>
-
-<p>Bem-vindo, @ViewBag.UserName</p>
+<div>
+    <h3>Seja bem vindo(a), @Request.QueryString("name")!</h3>
+</div>

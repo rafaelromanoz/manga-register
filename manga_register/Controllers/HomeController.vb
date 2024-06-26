@@ -5,10 +5,11 @@ Namespace manga_register.Controllers
         Inherits Controller
 
         ' GET: Home/Welcome
-        Public Function Welcome(userName As String) As ActionResult
-            ViewBag.UserName = userName
+        Public Function Welcome(name As String) As ActionResult
+            ViewBag.Name = name
             Return View()
         End Function
     End Class
 End Namespace
+
 

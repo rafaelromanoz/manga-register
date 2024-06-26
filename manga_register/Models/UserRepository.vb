@@ -5,6 +5,10 @@ Public Class UserRepository
     Private connectionString As String = ConfigurationManager.ConnectionStrings("DefaultConnection").ConnectionString
 
     Public Function AddUser(user As User) As Boolean
+        If IsEmailRegistered(user.Email) Then
+            Return False
+        End If
+
         Using con As New SqlConnection(connectionString)
             Dim cmd As New SqlCommand("INSERT INTO Users (UserName, Password, Email) VALUES (@UserName, @Password, @Email)", con)
             cmd.Parameters.AddWithValue("@UserName", user.UserName)
@@ -15,9 +19,19 @@ Public Class UserRepository
         End Using
     End Function
 
+    Private Function IsEmailRegistered(email As String) As Boolean
+        Using con As New SqlConnection(connectionString)
+            Dim cmd As New SqlCommand("SELECT COUNT(*) FROM Users WHERE Email = @Email", con)
+            cmd.Parameters.AddWithValue("@Email", email)
+            con.Open()
+            Dim count = Convert.ToInt32(cmd.ExecuteScalar())
+            Return count > 0
+        End Using
+    End Function
+
     Public Function ValidateUser(email As String, password As String) As Boolean
         Using con As New SqlConnection(connectionString)
-            Dim cmd As New SqlCommand("SELECT COUNT(*) FROM Users WHERE Email = @Email AND Password = @Password", con)
+            Dim cmd As New SqlCommand("SELECT COUNT(*) FROM Users WHERE Email = @email AND Password = @Password", con)
             cmd.Parameters.AddWithValue("@Email", email)
             cmd.Parameters.AddWithValue("@Password", password)
             con.Open()
@@ -36,22 +50,12 @@ Public Class UserRepository
         End Using
     End Function
 
-    Public Function GetUserByEmail(email As String) As User
+    Public Function GetUserName(email As String) As String
         Using con As New SqlConnection(connectionString)
-            Dim cmd As New SqlCommand("SELECT * FROM Users WHERE Email = @Email", con)
+            Dim cmd As New SqlCommand("SELECT UserName FROM Users WHERE Email = @Email", con)
             cmd.Parameters.AddWithValue("@Email", email)
             con.Open()
-            Using reader = cmd.ExecuteReader()
-                If reader.Read() Then
-                    Return New User() With {
-                        .UserId = Convert.ToInt32(reader("UserId")),
-                        .UserName = reader("UserName").ToString(),
-                        .email = reader("Email").ToString(),
-                        .Password = reader("Password").ToString()
-                    }
-                End If
-            End Using
+            Return Convert.ToString(cmd.ExecuteScalar())
         End Using
-        Return Nothing
     End Function
 End Class
