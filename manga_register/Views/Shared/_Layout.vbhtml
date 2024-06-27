@@ -50,14 +50,14 @@
             text-decoration: none;
             outline: none;
             color: #fff;
-            background-color: #007bff;
+            background-color: #1E5036;
             border: none;
             border-radius: 15px;
-            box-shadow: 0 9px #999;
         }
 
             .btn:hover {
-                background-color: #0069d9;
+                background-color: #4f4d49;
+                color: #d1ccbe;
             }
 
             .btn:active {
